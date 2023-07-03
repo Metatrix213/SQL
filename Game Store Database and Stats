@@ -1,0 +1,28 @@
+CREATE TABLE games (id INTEGER PRIMARY KEY, name TEXT,price INTEGER, in_stock INTEGER, sold_30days INTEGER, times_marked_down INTEGER);
+
+INSERT INTO games VALUES
+(1, "Final Fantasy XVI", 69, 89, 200, 0),
+(2, "Marvel's Spiderman", 69, 70, 50, 0),
+(3, "Returnal", 49, 20, 10, 2),
+(4, "NBA 2K23", 69, 65, 42, 0),
+(5, "Call of Duty: Modern Warfare", 35, 99, 5, 5),
+(6, "Call of Duty: Modern Warfare 2", 69, 150, 200, 0),
+(7, "Wild Hearts", 49, 38, 20, 1),
+(8, "BIOMUTANT", 39, 20, 3, 5),
+(9, "Sim's 4", 20, 15, 2, 7),
+(10, "Cities: Skylines", 25, 13, 3, 6),
+(11, "MegaMan Battle Network", 12, 20, 10, 8),
+(12, "Fire Emblem", 35, 60, 18, 4),
+(13, "DOOM", 30, 65, 13, 4),
+(14, "DOOM 2", 60, 95, 34, 1),
+(15, "F123", 69, 105, 82, 0);
+SELECT * FROM games;
+
+/** Here I am sorting the stores inventory by the amount sold in the last 30 days**/
+SELECT * FROM games
+WHERE sold_30days
+ORDER BY sold_30days desc;
+
+/** Here I am multiplying the amount of games sold in the last 30 days by the price of the game to find out the total income form sales in the last 30 days **/
+SELECT name, 
+sold_30days*price AS total_income FROM games ORDER BY total_income desc;
